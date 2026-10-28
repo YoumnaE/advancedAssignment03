@@ -19,8 +19,48 @@
             Console.WriteLine("First grade: " + grades.First());
             Console.WriteLine("Last grade: " + grades.Last());
 
+            //3. Sort the grades ascending, then print
+            grades.Sort();
+            foreach (int grade in grades){
+                Console.Write(grade + " ");
+            }
+
+            //4. Get the first grade above 90
+            int firstAbove90 = grades.First(g => g > 90);
+            Console.WriteLine("\nFirst grade above 90: " + firstAbove90);
+
+            //5. Get all grades below 75
+            List<int> below75 = grades.Where(g => g < 75).ToList();
+
+            foreach (int grade in below75) { 
+            Console.Write(grade + " ");
+            }
+
+            //6. Remove all failing grades (below 75)
+            grades.RemoveAll(g => g < 75);
+
+            foreach (int grade in grades)
+            {
+                Console.Write(grade + " ");
+            }
+
+            //7. Check if any grade equals 100
+            bool check100 = grades.Any(g => g == 100);
+            Console.WriteLine("\nhas any 100: " + check100);
+
+            //8. Create a List<string> where each grade becomes "Grade: X"
+            List<string> gradesString = grades.Select(g => "Grade:" + g).ToList();
+
+            foreach (string grade in gradesString)
+            {
+                Console.Write(grade + " ");
+            }
+
             #endregion
 
+            #region MyRegion
+
+            #endregion
 
             Console.ReadLine();
         }
