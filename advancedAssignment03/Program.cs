@@ -197,6 +197,43 @@
 
             #endregion
 
+            Console.WriteLine("\n---------------------------------------------------");
+
+            #region Exercise 5: Print Queue Simulator
+
+            Queue<string> documents = new Queue<string>();
+
+            documents.Enqueue("Report.pdf");
+            documents.Enqueue("Invoice.pdf");
+            documents.Enqueue("Letter.docx");
+            documents.Enqueue("Resume.pdf");
+            documents.Enqueue("Photo.jpg");
+
+            // 1. Print queue contents and Count
+            Console.WriteLine("Documents in the queue:");
+
+            foreach (string document in documents)
+            {
+                Console.WriteLine(document);
+            }
+            Console.WriteLine(documents.Count);
+
+            // 2. Use Peek to see which document will print next (without removing)
+            Console.WriteLine("Next to print: " + documents.Peek());
+
+            //3. Process the queue: Dequeue each document and print "Printing: [name]"
+            while (documents.Count > 0)
+            {
+                string document = documents.Dequeue();
+                Console.WriteLine("Printing: " + document);
+            }
+
+            //4. Try TryDequeue on the now-empty queue — what happens?
+            bool success = documents.TryDequeue(out string nextDocument);
+            Console.WriteLine("TryDequeue successful: " + success); //false, tries to remove item from queue but queue is empty
+
+            #endregion
+
             Console.ReadLine();
         }
     }
