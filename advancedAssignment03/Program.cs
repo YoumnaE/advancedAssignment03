@@ -234,6 +234,39 @@
 
             #endregion
 
+            Console.WriteLine("\n---------------------------------------------------");
+
+            #region Exercise 6: Browser History (Undo)
+
+            Stack<string> history = new Stack<string>();
+
+            // 1. Push 5 URLs
+            history.Push("google.com");
+            history.Push("github.com");
+            history.Push("stackoverflow.com");
+            history.Push("youtube.com");
+            history.Push("claude.ai");
+
+            // 2. Peek at the current page (top of stack)
+            Console.WriteLine("Current page: " + history.Peek());
+
+            //3. Press "back" 3 times using Pop — print each page you leave
+            for (int i = 0; i < 3; i++)
+            {
+                string page = history.Pop();
+                Console.WriteLine("leaving page: " + page);
+            }
+
+            // 4. Print the current page after going back
+            Console.WriteLine("Current page: " + history.Peek());
+
+            // 5. TryPop on an empty stack
+            history.Pop();
+            history.Pop();
+            bool popSuccess = history.TryPop(out string lastPage);
+            Console.WriteLine("TryPop successful: " + popSuccess); //false, found no pages to remove
+
+            #endregion
             Console.ReadLine();
         }
     }
