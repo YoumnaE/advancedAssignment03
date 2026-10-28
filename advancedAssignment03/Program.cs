@@ -58,7 +58,46 @@
 
             #endregion
 
-            #region MyRegion
+            Console.WriteLine("\n---------------------------------------------------");
+
+            #region Exercise 2: Leaderboard
+
+            SortedDictionary<int, string> leaderboard = new SortedDictionary<int, string>();
+
+            //1. Add: 500="Ahmed", 200="Sara", 800="Ali", 350="Mona"
+            leaderboard.Add(500, "Ahmed");
+            leaderboard.Add(200, "Sara");
+            leaderboard.Add(800, "Ali");
+            leaderboard.Add(350, "Mona");
+
+            //2. Print all entries (they should be sorted by score automatically)
+            foreach (var player in leaderboard)
+            {
+                Console.WriteLine($"Score: {player.Key}, Name: {player.Value}");
+            }
+
+            //3. Access the first key and first value 
+            Console.WriteLine("First Score: " + leaderboard.First().Key + " First Name: " + leaderboard.First().Value);
+
+            //4. Check if score 500 exists
+            Console.WriteLine("Score 500 exists: " + leaderboard.ContainsKey(500));
+
+            //5. Safely get the player with score 999
+            if (leaderboard.TryGetValue(999, out string player999))
+            {
+                Console.WriteLine("Player with score 999: " + player999);
+            }else
+            {
+                Console.WriteLine("No player with score 999");
+            }
+
+            //6. Remove the player with score 200 and print the updated list
+            leaderboard.Remove(200);
+
+            foreach (var player in leaderboard)
+            {
+                Console.WriteLine($"Score: {player.Key}, Name: {player.Value}");
+            }
 
             #endregion
 
