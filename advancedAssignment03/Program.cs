@@ -146,6 +146,57 @@
 
             #endregion
 
+            Console.WriteLine("\n---------------------------------------------------");
+
+            #region Exercise 4: Unique Email Validator
+
+            //1. Create a HashSet<string> with a case-insensitive comparer: new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+
+            HashSet<string> emails = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+            emails.Add("Ahmed@test.com");
+            emails.Add("Sara@test.com");
+
+            Console.WriteLine(emails.Add("ahmed@test.com")); // false
+            Console.WriteLine(emails.Add("AHMED@test.com")); // false
+            Console.WriteLine(emails.Add("Omar@test.com"));  // true
+
+            foreach (string name in emails)
+            {
+                Console.WriteLine(name);
+            }
+
+            //2. add emails
+            emails.Add("ahmed@test.com");
+            emails.Add("AHMED@test.com");
+            emails.Add("sara@test.com");
+            emails.Add("Sara@Test.com");
+
+            //3. Print Count — how many are actually stored? Explain why.
+            Console.WriteLine(emails.Count);
+            // only stores 3 because others are just duplicates and its case insenstive also hashset doesnt accept duplicates
+
+            //4. Create two sets
+            HashSet<int> setA = new HashSet<int> { 1, 2, 3, 4, 5 };
+            HashSet<int> setB = new HashSet<int> { 4, 5, 6, 7, 8 };
+
+            //5. Print the result of: UnionWith, IntersectWith, ExceptWith
+            HashSet<int> union = new HashSet<int>(setA);
+            union.UnionWith(setB);
+            Console.WriteLine("Union: " + string.Join(", ", union));
+            HashSet<int> intersection = new HashSet<int>(setA);
+            intersection.IntersectWith(setB);
+            Console.WriteLine("Intersection: " + string.Join(", ", intersection));
+
+            HashSet<int> difference = new HashSet<int>(setA);
+            difference.ExceptWith(setB);
+            Console.WriteLine("Difference: " + string.Join(", ", difference));
+
+            HashSet<int> subset = new HashSet<int> { 1, 2 };
+            Console.WriteLine("Is {1, 2} a subset of Set A? " + subset.IsSubsetOf(setA));
+
+            #endregion
+
             Console.ReadLine();
         }
     }
